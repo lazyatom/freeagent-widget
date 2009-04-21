@@ -25,15 +25,15 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>5</integer>
+	<integer>0</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>4e6363f8d23caf41</string>
+		<string>57e9fe91d83caf41</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojLLnELM/FreeAgent.dcproj/project.wdgt/</string>
+		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojLCEWG6/FreeAgent.dcproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -83,9 +83,9 @@
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>9</integer>
+		<integer>5</integer>
 		<key>SplitViewConfig</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>_collapsingFrameDimension</key>
 		<real>0.0</real>
 		<key>_indexOfCollapsedView</key>
@@ -123,11 +123,7 @@
 		</array>
 	</array>
 	<key>Objects view last selections</key>
-	<array>
-		<array>
-			<integer>5</integer>
-		</array>
-	</array>
+	<array/>
 	<key>Opened Steps</key>
 	<array/>
 	<key>Visible StackLayout Views</key>
