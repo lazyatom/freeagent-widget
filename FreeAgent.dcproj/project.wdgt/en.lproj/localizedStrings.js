@@ -7,7 +7,5 @@
 var localizedStrings = {
     "Done": "Done",
     "FreeAgent": "FreeAgent",
-    "FreeAgent ": "FreeAgent Timeslips",
-    "FreeAgent Timeslips": "FreeAgent Timeslips",
     "Timeslips": "Timeslips"
 };

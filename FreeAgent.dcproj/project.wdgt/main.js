@@ -13,6 +13,7 @@ function load()
     dashcode.setupParts();
     $("#newTaskBox").hide();
     $("#posted").hide();
+    $("#customTime").hide();
     disablePost();
     loadPreferences();
     getProjectData();
@@ -369,4 +370,30 @@ function openFreeRange(event)
 function openLazyatom(event)
 {
     widget.openURL("http://lazyatom.com");
+}
+
+
+function enterTime(event)
+{
+    $("#customTime").show();
+    $("#customTime").focus();
+}
+
+
+function setCustomTime(event)
+{
+    $("#customTime").hide();
+    var val = $("#customTime").val();
+    var result = null;
+    if (result = /^(\d+)[m]?$/.exec(val)) {
+        // if it's just a number, treat it as minutes
+        elapsedSeconds = result[1] * 60;
+    } else if (result = /^(\d+)([h\:](\d+)[m]?)?$/.exec(val)) {
+        // if it has an h, or : in it, treat the RHS as hours
+        elapsedSeconds = (result[1] * 60 * 60) + (result[3] * 60);
+    }
+    if (elapsedSeconds >= 60) {
+        enablePost();
+    }
+    displayTime();
 }

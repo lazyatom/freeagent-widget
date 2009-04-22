@@ -353,3 +353,14 @@ body {
     bottom: 79px;
     height: auto;
 }
+
+#customTime {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-family: 'Helvetica Neue';
+    font-size: 28px;
+    top: 72px;
+    width: 127px;
+    left: 102px;
+}
