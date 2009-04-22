@@ -168,7 +168,7 @@ function ajax(remotePath, callback) {
     })
 }
 
-function populateSelect(domId, kind, xml) {
+function populateSelect(domId, kind, xml, checkFunction) {
     $(domId).html("");
     var things = xml.find(kind);
     if (things.length == 0) {
@@ -176,9 +176,11 @@ function populateSelect(domId, kind, xml) {
     } else {
         things.each(function() {
             var thing = $(this);
-            var thing_id = thing.find("id").text();
-            var thing_name = thing.find("name").text();
-            $(domId).append("<option value=" + thing_id + ">" + thing_name + "</option>"); 
+            if (checkFunction == null || checkFunction(thing)) {
+                var thing_id = thing.find("id").text();
+                var thing_name = thing.find("name").text();
+                $(domId).append("<option value=" + thing_id + ">" + thing_name + "</option>"); 
+            }
         });
     }
 }
@@ -186,7 +188,9 @@ function populateSelect(domId, kind, xml) {
 function loadProjects(event)
 {
     ajax("projects", function(xml) {
-        populateSelect("#projects", "project", xml);
+        populateSelect("#projects", "project", xml, function(project) {
+            return project.find("status").text() == "Active";
+        });
         loadTasks();
     });
 }
