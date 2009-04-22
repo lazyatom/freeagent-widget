@@ -25,11 +25,11 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>2</integer>
+	<integer>5</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>018af1670f3eaf41</string>
+		<string>f0bfcdf1123eaf41</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
@@ -125,7 +125,7 @@
 	<key>Objects view last selections</key>
 	<array>
 		<array>
-			<integer>2</integer>
+			<integer>5</integer>
 		</array>
 	</array>
 	<key>Opened Steps</key>
