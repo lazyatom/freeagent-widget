@@ -283,6 +283,10 @@ function elapsedTimeAsHours() {
     return elapsedSeconds / (60 * 60);
 }
 
+function comment() {
+    return $("#comment").val();
+}
+
 function postTime(event)
 {
     if (elapsedSeconds < 60) {
@@ -294,7 +298,8 @@ function postTime(event)
     var timeslipXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><timeslip>" + 
                       "<dated-on>" + now.toUTCString() + "</dated-on>" + 
                       "<user-id>" + userID + "</user-id>" + 
-                      "<hours>" + elapsedTimeAsHours() + "</hours>";
+                      "<hours>" + elapsedTimeAsHours() + "</hours>" + 
+                      "<comment>" + comment() + "</comment>";
 
     // set the task
     if ($("#tasks").val() == 'new') {

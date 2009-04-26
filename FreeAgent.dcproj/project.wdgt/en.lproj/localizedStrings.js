@@ -5,6 +5,7 @@
  code generator otherwise the changes will be lost.
  */
 var localizedStrings = {
+    "00:00:00": "00:00:00",
     "Done": "Done",
     "FreeAgent": "FreeAgent",
     "Timeslips": "Timeslips"

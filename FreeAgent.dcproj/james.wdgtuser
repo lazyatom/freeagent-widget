@@ -20,8 +20,8 @@
 		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {981, 194}}</string>
-			<string>{{0, 204}, {981, 545}}</string>
+			<string>{{0, 0}, {981, 312}}</string>
+			<string>{{0, 322}, {981, 427}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -29,11 +29,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>3a203110bc3eaf41</string>
+		<string>58ae57371b49af41</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojpcm2K1/FreeAgent.dcproj/project.wdgt/</string>
+		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojDchKBu/FreeAgent.dcproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -41,13 +41,13 @@
 		<key>percent-type</key>
 		<integer>2</integer>
 		<key>percent-x</key>
-		<real>0.03958333283662796</real>
+		<real>0.2430555522441864</real>
 		<key>percent-y</key>
-		<real>0.024444444105029106</real>
+		<real>0.064444445073604584</real>
 		<key>pos-x</key>
-		<integer>1053</integer>
+		<integer>760</integer>
 		<key>pos-y</key>
-		<integer>22</integer>
+		<integer>58</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
@@ -120,6 +120,11 @@
 		<array>
 			<integer>0</integer>
 			<integer>1</integer>
+		</array>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>9</integer>
 		</array>
 	</array>
 	<key>Objects view last selections</key>

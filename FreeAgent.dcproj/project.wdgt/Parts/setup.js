@@ -17,7 +17,7 @@ var dashcodePartSpecs = {
     "text1": { "creationFunction": "CreateText", "text": "Password" },
     "text2": { "creationFunction": "CreateText", "text": "Domain" },
     "text3": { "creationFunction": "CreateText", "text": "Free Range" },
-    "text4": { "creationFunction": "CreateText", "text": "by James Adam & Free Range" },
+    "text4": { "creationFunction": "CreateText", "text": "by James Adam  &" },
     "time": { "creationFunction": "CreateButton", "leftImageWidth": 1, "onclick": "toggleTiming", "rightImageWidth": 1, "text": "00:00:00" },
     "title": { "creationFunction": "CreateText", "text": "FreeAgent" }
 };
