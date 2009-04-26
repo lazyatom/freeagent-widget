@@ -406,3 +406,11 @@ function setCustomTime(event)
     }
     displayTime();
 }
+
+
+function hideTime(event)
+{
+    if (event.keyCode == 27 || event.keyCode == 13) {
+      setCustomTime();
+    }
+}
