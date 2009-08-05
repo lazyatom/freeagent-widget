@@ -23,7 +23,6 @@ GUI = {
   },
   
   displayTime: function(duration) {
-    alert("duration: " + duration);
     var hours = Math.floor(duration / (60*60));
     var remainder = duration % (60 * 60);
     var minutes = Math.floor((duration - (hours * 60 * 60)) / 60);
