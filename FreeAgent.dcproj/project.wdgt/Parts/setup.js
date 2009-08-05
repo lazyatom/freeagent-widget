@@ -12,12 +12,13 @@ var dashcodePartSpecs = {
     "message": { "creationFunction": "CreateText", "text": "Hello, you." },
     "post": { "creationFunction": "CreateButton", "leftImageWidth": 1, "onclick": "postTime", "rightImageWidth": 20, "text": "Post" },
     "posted": { "creationFunction": "CreateText", "text": "Posted!" },
-    "reset": { "creationFunction": "CreateButton", "leftImageWidth": 20, "onclick": "resetTime", "rightImageWidth": 1, "text": "Reset" },
+    "reset": { "creationFunction": "CreateButton", "leftImageWidth": 20, "onclick": "Timer.reset", "rightImageWidth": 1, "text": "Reset" },
     "text": { "creationFunction": "CreateText", "text": "Email" },
     "text1": { "creationFunction": "CreateText", "text": "Password" },
     "text2": { "creationFunction": "CreateText", "text": "Domain" },
     "text3": { "creationFunction": "CreateText", "text": "Free Range" },
     "text4": { "creationFunction": "CreateText", "text": "by James Adam  &" },
-    "time": { "creationFunction": "CreateButton", "leftImageWidth": 1, "onclick": "toggleTiming", "rightImageWidth": 1, "text": "00:00:00" },
-    "title": { "creationFunction": "CreateText", "text": "FreeAgent" }
+    "time": { "creationFunction": "CreateButton", "leftImageWidth": 1, "onclick": "toggleTimer", "rightImageWidth": 1, "text": "00:00:00" },
+    "title": { "creationFunction": "CreateText", "text": "FreeAgent" },
+    "visitSite": { "creationFunction": "CreateText", "text": "➠" }
 };

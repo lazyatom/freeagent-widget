@@ -4,19 +4,32 @@
  according to the license.txt file included in the project.
  */
 
+function loadPreferences() {
+  FreeAgent.domain = widget.preferenceForKey("domain");
+  FreeAgent.email = widget.preferenceForKey("email");
+  FreeAgent.password = widget.preferenceForKey("password");
+  if (!Timer.running) { 
+    Timer.duration = widget.preferenceForKey("unposted-time");
+  }
+}
+
+function savePreferences() {
+  widget.setPreferenceForKey(FreeAgent.domain, "domain");
+  widget.setPreferenceForKey(FreeAgent.email, "email");
+  widget.setPreferenceForKey(FreeAgent.password, "password");
+  widget.setPreferenceForKey(Timer.duration, "unposted-time");
+}
+
 //
 // Function: load()
 // Called by HTML body element's onload event when the widget is ready to start
 //
 function load()
 {
-    dashcode.setupParts();
-    $("#newTaskBox").hide();
-    $("#posted").hide();
-    $("#customTime").hide();
-    disablePost();
-    loadPreferences();
-    getProjectData();
+  dashcode.setupParts();
+  loadPreferences();
+  FreeAgent.prepare();
+  GUI.prepare(Timer.duration);
 }
 
 //
@@ -25,9 +38,9 @@ function load()
 //
 function remove()
 {
-    // Stop any timers to prevent CPU usage
-    // Remove any preferences as needed
-    // widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("your-key"));
+  // Stop any timers to prevent CPU usage
+  // Remove any preferences as needed
+  // widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("your-key"));
 }
 
 //
@@ -36,7 +49,8 @@ function remove()
 //
 function hide()
 {
-    // Stop any timers to prevent CPU usage
+  // Stop any timers to prevent CPU usage
+  savePreferences();
 }
 
 //
@@ -45,7 +59,7 @@ function hide()
 //
 function show()
 {
-    // Restart any timers that were stopped on hide
+  // Restart any timers that were stopped on hide
 }
 
 //
@@ -54,13 +68,13 @@ function show()
 //
 function sync()
 {
-    // Retrieve any preference values that you need to be synchronized here
-    // Use this for an instance key's value:
-    // instancePreferenceValue = widget.preferenceForKey(null, dashcode.createInstancePreferenceKey("your-key"));
-    //
-    // Or this for global key's value:
-    // globalPreferenceValue = widget.preferenceForKey(null, "your-key");
-    loadPreferences();
+  // Retrieve any preference values that you need to be synchronized here
+  // Use this for an instance key's value:
+  // instancePreferenceValue = widget.preferenceForKey(null, dashcode.createInstancePreferenceKey("your-key"));
+  //
+  // Or this for global key's value:
+  // globalPreferenceValue = widget.preferenceForKey(null, "your-key");
+  loadPreferences();
 }
 
 //
@@ -69,21 +83,22 @@ function sync()
 //
 // event: onClick event from the info button
 //
-function showBack(event)
-{
-    var front = document.getElementById("front");
-    var back = document.getElementById("back");
+function showBack(event) {
+  var front = document.getElementById("front");
+  var back = document.getElementById("back");
 
-    if (window.widget) {
-        widget.prepareForTransition("ToBack");
-    }
+  if (window.widget) {
+    widget.prepareForTransition("ToBack");
+  }
 
-    front.style.display = "none";
-    back.style.display = "block";
+  GUI.showConfiguration();
+  
+  front.style.display = "none";
+  back.style.display = "block";
 
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
+  if (window.widget) {
+    setTimeout('widget.performTransition();', 0);
+  }
 }
 
 //
@@ -92,325 +107,74 @@ function showBack(event)
 //
 // event: onClick event from the done button
 //
-function showFront(event)
-{
-    var front = document.getElementById("front");
-    var back = document.getElementById("back");
+function showFront(event) {
+  var front = document.getElementById("front");
+  var back = document.getElementById("back");
 
-    if (window.widget) {
-        widget.prepareForTransition("ToFront");
-    }
+  if (window.widget) {
+    widget.prepareForTransition("ToFront");
+  }
 
-    front.style.display="block";
-    back.style.display="none";
+  front.style.display="block";
+  back.style.display="none";
 
-    savePreferences();
+  GUI.storeConfiguration();
+  savePreferences();
+  FreeAgent.prepare(); // in case anything has changed
 
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
+  if (window.widget) {
+    setTimeout('widget.performTransition();', 0);
+  }
 }
 
 if (window.widget) {
-    widget.onremove = remove;
-    widget.onhide = hide;
-    widget.onshow = show;
-    widget.onsync = sync;
+  widget.onremove = remove;
+  widget.onhide = hide;
+  widget.onshow = show;
+  widget.onsync = sync;
 }
 
-function loadPreferences() {
-    $("#domain").val(widget.preferenceForKey("domain"));
-    $("#email").val(widget.preferenceForKey("email"));
-    $("#password").val(widget.preferenceForKey("password"));
+// Handlers for click events
+function toggleTimer(event) {
+  return Timer.toggle();
 }
 
-function getProjectData() {
-    if ($("#domain").val() == "" || $("#email").val() == "" || $("#password").val() == "") {
-      $("#message").text("Please supply your details");
-      showBack();
-    } else {
-        alert("loading projects from server");
-        getUserID();
-        loadProjects();
-    }
+function postTime(event) {
+  FreeAgent.postTime({
+    timer: Timer,
+    comment: $("#comment").val(),
+  })
+  Timer.reset();
+  $("#comment").val("");
 }
 
-function savePreferences() {
-    alert("saving preferences");
-    widget.setPreferenceForKey($("#domain").val(), "domain");
-    widget.setPreferenceForKey($("#email").val(), "email");
-    widget.setPreferenceForKey($("#password").val(), "password");
-    loadProjects();
+function addNewTask(event) {
+  $("#newTaskBox").hide();
+  if ($("#newTaskName").val() != "") {
+    FreeAgent.newTask($("#newTaskName").val());
+  }
 }
 
-function make_base_auth(user, password) {
-  var tok = user + ':' + password;
-  var hash = $.base64Encode(tok);
-  return "Basic " + hash;
+function enterTime(event) {
+  $("#customTime").show();
+  $("#customTime").focus();
 }
 
-function ajax(remotePath, callback) {
-    var remoteUrl = "https://" + $("#domain").val() + ".freeagentcentral.com/" + remotePath;
-    alert("calling: " + remoteUrl);
-    $.ajax({
-        url: remoteUrl,
-        contentType: "application/xml",
-        dataType: "xml",
-        beforeSend : function(req) {
-            req.setRequestHeader('Authorization', 
-                                 make_base_auth($("#email").val(), $("#password").val()));
-        },
-        success: function(xml, status) {
-            alert("status: " + status);
-            alert("got: " + xml);
-            callback($(xml));
-        }
-    })
+function setCustomTime(event) {
+  $("#customTime").hide();
+  Timer.parse($("#customTime").val());
 }
 
-function populateSelect(domId, kind, xml, checkFunction) {
-    $(domId).html("");
-    var things = xml.find(kind);
-    if (things.length == 0) {
-        $(domId).append("<option value=''></option>");
-    } else {
-        things.each(function() {
-            var thing = $(this);
-            if (checkFunction == null || checkFunction(thing)) {
-                var thing_id = thing.find("id").text();
-                var thing_name = thing.find("name").text();
-                $(domId).append("<option value=" + thing_id + ">" + thing_name + "</option>"); 
-            }
-        });
-    }
+function hideTime(event) {
+  if (event.keyCode == 27 || event.keyCode == 13) {
+    setCustomTime();
+  }
 }
 
-function loadProjects(event)
-{
-    ajax("projects", function(xml) {
-        populateSelect("#projects", "project", xml, function(project) {
-            return project.find("status").text() == "Active";
-        });
-        loadTasks();
-    });
+// Opening external websites
+function visitSite(event) {
+  widget.openURL("https://" + FreeAgent.domain + ".freeagentcentral.com/timeslips");
 }
+function openFreeRange(event) { widget.openURL("http://gofreerange.com"); }
+function openLazyatom(event)  { widget.openURL("http://lazyatom.com"); }
 
-
-function loadTasks(event)
-{
-    ajax("projects/" + $("#projects").val() + "/tasks", function(xml) {
-        populateSelect("#tasks", "task", xml);
-        $("#tasks").append("<option value=\"-1\">New Task...</option>");
-    });
-}
-
-var timerRunning = false;
-var elapsedSeconds = 0;
-
-function enablePost() {
-    $($("#post div")[2]).css("color", "#000")
-}
-
-function disablePost() {
-    $($("#post div")[2]).css("color", "#666")
-}
-
-function incrementTime() {
-    if (timerRunning) {
-        elapsedSeconds += 1;
-        displayTime();
-        if (elapsedSeconds >= 60) {
-            enablePost();
-        }
-        setTimeout(incrementTime, 1000);
-    }
-}
-
-function buttonText() {
-    return $($("#time div")[2]);
-}
-
-function displayTime() {
-    var hours = Math.floor(elapsedSeconds / (60*60));
-    var remainder = elapsedSeconds % (60 * 60);
-    var minutes = Math.floor((elapsedSeconds - (hours * 60 * 60)) / 60);
-    var seconds = (elapsedSeconds % 60);
-    if (hours < 10) { hours = "0" + hours; }
-    if (minutes < 10) { minutes = "0" + minutes; }
-    if (seconds < 10) { seconds = "0" + seconds; }
-    // somewhat arcane.
-    buttonText().text(hours + ":" + minutes + ":" + seconds);
-}
-
-function stopTimer() {
-    timerRunning = false;
-    buttonText().css("color", "#000")
-}
-
-function startTimer() {
-    timerRunning = true;
-    buttonText().css("color", "#060")
-    setTimeout(incrementTime, 1000);
-}
-
-function toggleTiming(event)
-{
-    if (timerRunning) {
-        stopTimer();
-    } else {
-        startTimer();
-    }
-}
-
-
-function resetTime(event)
-{
-    elapsedSeconds = 0;
-    stopTimer();
-    disablePost();
-    displayTime();
-}
-
-var userID = null;
-
-function getUserID() {
-    ajax("users", function(xml) {
-        userID = xml.find("user<email:contains(" + $("#email").val() + ")").find("id").text()
-    });
-}
-
-function elapsedTimeAsHours() {
-    return elapsedSeconds / (60 * 60);
-}
-
-function comment() {
-    return $("#comment").val();
-}
-
-function postTime(event)
-{
-    if (elapsedSeconds < 60) {
-        return; // less than a minute!
-    }
-    var remoteUrl = "https://" + $("#domain").val() + ".freeagentcentral.com/timeslips?project_id=" + $("#projects").val();
-    alert("calling: " + remoteUrl);
-    var now = new Date();
-    var timeslipXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><timeslip>" + 
-                      "<dated-on>" + now.toUTCString() + "</dated-on>" + 
-                      "<user-id>" + userID + "</user-id>" + 
-                      "<hours>" + elapsedTimeAsHours() + "</hours>" + 
-                      "<comment>" + comment() + "</comment>";
-
-    // set the task
-    if ($("#tasks").val() == 'new') {
-        timeslipXML += "<new-task>" + $($("#tasks")[0].options[$("#tasks")[0].selectedIndex]).text() + "</new-task>";
-    } else {
-        timeslipXML += "<task-id>" + $("#tasks").val() + "</task-id>"
-    }
-    timeslipXML += "</timeslip>";
-    
-    alert("xml: " + timeslipXML);
-    
-    $.ajax({
-        type: 'POST',
-        url: remoteUrl,
-        contentType: "application/xml",
-        dataType: "xml",
-        data: timeslipXML,
-        beforeSend : function(req) {
-            req.setRequestHeader('Authorization', 
-                                 make_base_auth($("#email").val(), $("#password").val()));
-        },
-        filterData: function(data, type) {
-            if (data == "") { // looks like FreeAgent returns nothing.
-                return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><empty></empty>";
-            }
-        },
-        success: function(xml, status) {
-            showPosted();
-            resetTime();
-        },
-        // debug
-        error: function(xml, status, error) {
-            alert("xml: " + xml.responseText);
-            alert("error status: " + status);
-            alert("error: " + error);
-        }
-    })
-}
-
-function showPosted() {
-    $("#posted").show();
-    var itemToFadeOut = document.getElementById("posted");
-    var fadeHandler = function(a, c, s, f){ itemToFadeOut.style.opacity = c; };
-    new AppleAnimator(2000, 13, 1.0, 0.0, fadeHandler).start();
-}
-
-function getNewTask(event)
-{
-    if ($("#tasks").val() == -1) {
-        $("#newTaskBox").show();
-        $("#newTaskName").focus();
-    }
-}
-
-function addNewTask(event)
-{
-    $("#newTaskBox").hide();
-    if ($("#newTaskName").val() != "") {
-        $("#tasks option[value=-1]").before("<option value='new'>" + $("#newTaskName").val() + "</option>");
-        $("#tasks option[value=new]")[0].selected = true;
-    }
-}
-
-
-function visitSite(event)
-{
-    widget.openURL("https://" + $("#domain").val() + ".freeagentcentral.com/timeslips");
-}
-
-
-function openFreeRange(event)
-{
-    widget.openURL("http://gofreerange.com");
-}
-
-
-function openLazyatom(event)
-{
-    widget.openURL("http://lazyatom.com");
-}
-
-
-function enterTime(event)
-{
-    $("#customTime").show();
-    $("#customTime").focus();
-}
-
-
-function setCustomTime(event)
-{
-    $("#customTime").hide();
-    var val = $("#customTime").val();
-    var result = null;
-    if (result = /^(\d+)[m]?$/.exec(val)) {
-        // if it's just a number, treat it as minutes
-        elapsedSeconds = result[1] * 60;
-    } else if (result = /^(\d+)([h\:](\d+)[m]?)?$/.exec(val)) {
-        // if it has an h, or : in it, treat the RHS as hours
-        elapsedSeconds = (result[1] * 60 * 60) + (result[3] * 60);
-    }
-    if (elapsedSeconds >= 60) {
-        enablePost();
-    }
-    displayTime();
-}
-
-
-function hideTime(event)
-{
-    if (event.keyCode == 27 || event.keyCode == 13) {
-      setCustomTime();
-    }
-}

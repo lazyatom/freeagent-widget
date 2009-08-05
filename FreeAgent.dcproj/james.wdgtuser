@@ -3,7 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>Breakpoints</key>
-	<dict/>
+	<dict>
+		<key>free_agent.js:85</key>
+		<string></string>
+		<key>gui.js:105</key>
+		<string>-populateSelect</string>
+		<key>main.js:142</key>
+		<string>-postTime</string>
+	</dict>
 	<key>BreakpointsFrame</key>
 	<string>603 48 404 338 0 0 1440 878 </string>
 	<key>ContentSplitViewGeometry</key>
@@ -25,15 +32,15 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>922468a04949af41</string>
+		<string>bd012a26e729b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojZ9xSTi/FreeAgent.dcproj/project.wdgt/</string>
+		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojepkT8n/FreeAgent.dcproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -41,13 +48,13 @@
 		<key>percent-type</key>
 		<integer>2</integer>
 		<key>percent-x</key>
-		<real>0.2430555522441864</real>
+		<real>0.23333333432674408</real>
 		<key>percent-y</key>
-		<real>0.064444445073604584</real>
+		<real>0.091111108660697937</real>
 		<key>pos-x</key>
-		<integer>760</integer>
+		<integer>774</integer>
 		<key>pos-y</key>
-		<integer>58</integer>
+		<integer>82</integer>
 		<key>rosetta</key>
 		<false/>
 	</dict>
@@ -79,7 +86,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>63 87 1226 791 0 0 1440 878 </string>
+	<string>11 87 1226 791 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -130,7 +137,9 @@
 	<key>Objects view last selections</key>
 	<array>
 		<array>
-			<integer>2</integer>
+			<integer>0</integer>
+			<integer>0</integer>
+			<integer>7</integer>
 		</array>
 	</array>
 	<key>Opened Steps</key>
