@@ -8,12 +8,12 @@ Timer = {
     this.running = true;
     setTimeout(this._increment, 1000);
     this._updateGUI();
-    return this.running;
+    return true;
   },
   stop: function() {
-    this.running = false;
+    this.stopping = true;
     this._updateGUI();
-    return !this.running;
+    return false;
   },
   reset: function() {
     this.duration = 0;
@@ -39,19 +39,26 @@ Timer = {
   
   // private stuff
   running: false,
+  stopping: false,
   _increment: function() {
     if (Timer.running) {
-      Timer.duration += 1;
+      if (Timer.stopping) {
+        Timer.stopping = false;
+        Timer.running = false;
+        Timer._updateGUI();
+      } else {
+        Timer.duration += 1;
+        setTimeout(Timer._increment, 1000);
+      }
       GUI.updateDuration(Timer.duration);
       Timer._storeDuration();
-      setTimeout(Timer._increment, 1000);
     }
   },
   _storeDuration: function() {
     widget.setPreferenceForKey(this.duration, "unposted-time");
   },
   _updateGUI: function() {
-    this.running ? GUI.showRunning() : GUI.showStopped();
+    (this.running && !this.stopping) ? GUI.showRunning() : GUI.showStopped();
     GUI.updateDuration(this.duration);
   }
 };

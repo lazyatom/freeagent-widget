@@ -6,7 +6,7 @@
 	<dict>
 		<key>free_agent.js:85</key>
 		<string></string>
-		<key>gui.js:104</key>
+		<key>gui.js:120</key>
 		<string>-populateSelect</string>
 		<key>main.js:142</key>
 		<string>-postTime</string>
@@ -36,11 +36,11 @@
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>62f90f31eb29b041</string>
+		<string>f9313eff5555b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojepkT8n/FreeAgent.dcproj/project.wdgt/</string>
+		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojqlynds/FreeAgent.dcproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -86,7 +86,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>11 87 1226 791 0 0 1440 878 </string>
+	<string>106 77 1226 791 0 0 1440 878 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>

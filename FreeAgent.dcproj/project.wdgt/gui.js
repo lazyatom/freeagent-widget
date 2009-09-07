@@ -6,6 +6,20 @@ GUI = {
     this.updateDuration(duration);
   },
   
+  wait: function() {
+    alert('waiting');
+    this.wasEnabled = this.isEnabled();
+    this.disablePost();
+  },
+  
+  ready: function() {
+    alert('ready');
+    if (this.wasEnabled) {
+      alert('... and willing.');
+      this.enablePost();
+    }
+  },
+  
   updateDuration: function(duration) {
     this.displayTime(duration);
     if (duration >= 60) {
@@ -72,7 +86,9 @@ GUI = {
   },
   
   selectProject: function(event) {
+    this.wait();
     FreeAgent.setProject(this.selectedProjectID());
+    this.ready();
   },
   
   selectTask: function(event) {
@@ -119,5 +135,9 @@ GUI = {
   promptForDetails: function() {
     this.alert("Please supply your details");
     showBack();
+  },
+  
+  isEnabled: function() {
+    return (this.buttonText().css('color') == "rgb(0, 0, 0)");
   }
 };
