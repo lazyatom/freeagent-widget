@@ -6,20 +6,6 @@ GUI = {
     this.updateDuration(duration);
   },
   
-  wait: function() {
-    alert('waiting');
-    this.wasEnabled = this.isEnabled();
-    this.disablePost();
-  },
-  
-  ready: function() {
-    alert('ready');
-    if (this.wasEnabled) {
-      alert('... and willing.');
-      this.enablePost();
-    }
-  },
-  
   updateDuration: function(duration) {
     this.displayTime(duration);
     if (duration >= 60) {
@@ -86,9 +72,7 @@ GUI = {
   },
   
   selectProject: function(event) {
-    this.wait();
     FreeAgent.setProject(this.selectedProjectID());
-    this.ready();
   },
   
   selectTask: function(event) {
@@ -137,7 +121,11 @@ GUI = {
     showBack();
   },
   
-  isEnabled: function() {
-    return (this.buttonText().css('color') == "rgb(0, 0, 0)");
+  updateLoggerStatus: function(status) {
+    if (status) {
+      $("#message").css('color', "#ff0");
+    } else {
+      $("#message").css('color', "#fff");
+    }
   }
 };

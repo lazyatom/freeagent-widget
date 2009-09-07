@@ -21,14 +21,14 @@ FreeAgent = {
     var results = [];
     var things = xml.find(kind);
     if (things.length == 0) {
-      alert("Found no " + kind + "s");
+      Logger.log("Found no " + kind + "s");
     } else {
       things.each(function() {
         var thing = $(this);
         if (checkFunction == null || checkFunction(thing)) {
           var thing_id = thing.find("id").text();
           var thing_name = thing.find("name").text();
-          alert("adding " + kind + " '" + thing_name + "'");
+          Logger.log("adding " + kind + " '" + thing_name + "'");
           results.push({name:thing_name, id:thing_id});
         }
       });
@@ -39,7 +39,7 @@ FreeAgent = {
   loadUser: function() {
     this.loadXML("users", function(xml) {
       FreeAgent.userID = xml.find("user<email:contains(" + FreeAgent.email + ")").find("id").text();
-      alert("loaded user id: " + FreeAgent.userID);
+      Logger.log("loaded user id: " + FreeAgent.userID);
     });
   },
   
@@ -112,7 +112,7 @@ FreeAgent = {
     }
     timeslipXML += "</timeslip>";
     
-    alert("xml: " + timeslipXML);
+    Logger.log("xml: " + timeslipXML);
     
     this.ajax({
       type: 'POST',
@@ -134,7 +134,7 @@ FreeAgent = {
     this.ajax({
       url: this.remoteUrl(resource),
       success: function(xml, status) {
-        alert(FreeAgent.remoteUrl(resource) + " returned " + xml + " [status: " + status + "]");
+        Logger.log(FreeAgent.remoteUrl(resource) + " returned " + xml + " [status: " + status + "]");
         callback($(xml));
       }
     });
@@ -149,7 +149,7 @@ FreeAgent = {
   },
   
   ajax: function(options) {
-    alert("loading from " + options.url);
+    Logger.log("loading from " + options.url);
     $.ajax($.extend({
       contentType: "application/xml",
       dataType: "xml",
@@ -158,9 +158,9 @@ FreeAgent = {
       },
       // debug
       error: function(xml, status, error) {
-        alert("xml: " + xml.responseText);
-        alert("error status: " + status);
-        alert("error: " + error);
+        Logger.log("xml: " + xml.responseText);
+        Logger.log("error status: " + status);
+        Logger.log("error: " + error);
       }
     }, options));
   },

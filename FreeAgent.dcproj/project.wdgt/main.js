@@ -178,3 +178,6 @@ function visitSite(event) {
 function openFreeRange(event) { widget.openURL("http://gofreerange.com"); }
 function openLazyatom(event)  { widget.openURL("http://lazyatom.com"); }
 
+function toggleLogger(event) {
+  GUI.updateLoggerStatus(Logger.toggle());
+}

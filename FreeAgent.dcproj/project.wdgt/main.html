@@ -13,6 +13,7 @@
     <script type="text/javascript" src="Parts/InfoButton.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/GlassButton.js" charset="utf-8"></script>
     <script type="text/javascript" src="jquery-1.3.2.js" charset="utf-8"></script>
+    <script type="text/javascript" src="logger.js" charset="utf-8"></script>
     <script type="text/javascript" src="timer.js" charset="utf-8"></script>
     <script type="text/javascript" src="free_agent.js" charset="utf-8"></script>
     <script type="text/javascript" src="gui.js" charset="utf-8"></script>
@@ -51,7 +52,7 @@
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="text1" apple-style="part-width-dependent: true;part-height-dependent: true;"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="text2" apple-style="part-width-dependent: true;part-height-dependent: true;"></div>
         <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="domain">
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="message"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="message" onclick="toggleLogger(event)"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="text3" onclick="openFreeRange(event)"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="text4" onclick="openLazyatom(event)"></div>
     </div>
