@@ -12,7 +12,6 @@ Timer = {
   },
   stop: function() {
     this.stopping = true;
-    this._updateGUI();
     return false;
   },
   reset: function() {
