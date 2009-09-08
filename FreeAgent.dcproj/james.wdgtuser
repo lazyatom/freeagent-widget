@@ -25,15 +25,15 @@
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
-		<string>ba4e67fa6055b041</string>
+		<string>2e92ae8b5d56b041</string>
 		<key>in-layer</key>
 		<true/>
 		<key>path</key>
-		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcproj7pAx1x/FreeAgent.dcproj/project.wdgt/</string>
+		<string>/private/var/folders/OG/OGHFsoDxGYmTuil4f-W3M++++TI/-Tmp-/Dashcode/.FreeAgent.dcprojGECByT/FreeAgent.dcproj/project.wdgt/</string>
 		<key>percent-offset-x</key>
 		<integer>0</integer>
 		<key>percent-offset-y</key>
@@ -132,9 +132,7 @@
 	<key>Objects view last selections</key>
 	<array>
 		<array>
-			<integer>0</integer>
-			<integer>1</integer>
-			<integer>8</integer>
+			<integer>2</integer>
 		</array>
 	</array>
 	<key>Opened Steps</key>

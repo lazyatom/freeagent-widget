@@ -15,9 +15,10 @@ Timer = {
     return false;
   },
   reset: function() {
-    this.duration = 0;
-    this.stop();
-    this._storeDuration();
+    Timer.duration = 0;
+    Timer.stop();
+    Timer._storeDuration();
+    Timer._updateGUI();
   },
   asHours: function() {
     return this.duration / (60 * 60);
