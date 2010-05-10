@@ -28,7 +28,7 @@ function CreateButton(elementOrID, spec)
         if (spec.originalID) {
             styleElement = document.getElementById(spec.originalID);
         }
-		var imagePrefix = "Images/" + styleElement.id + "_";
+		var imagePrefix = "Parts/Images/" + styleElement.id + "_";
         var width = dashcode.getElementWidth(styleElement) || 20;
 		var height = dashcode.getElementHeight(styleElement) || 20;
 		
@@ -37,7 +37,7 @@ function CreateButton(elementOrID, spec)
 
 		buttonElement.object = new AppleButton(buttonElement, text, height, imagePrefix + "left.png", imagePrefix + "left_clicked.png", leftImageWidth, imagePrefix + "middle.png", imagePrefix + "middle_clicked.png", imagePrefix + "right.png", imagePrefix + "right_clicked.png", rightImageWidth, onclick);
         buttonElement.object.element = buttonElement;
-		buttonElement.object._container.childNodes.item(2).style.width = rightImageWidth + "px";
+		buttonElement.object._container.childNodes[2].style.width = rightImageWidth + "px";
 		buttonElement.object.setEnabled(!spec.disabled);
 		buttonElement.object.textElement.style.width = (width - (leftImageWidth + rightImageWidth)) + "px";
 	}
