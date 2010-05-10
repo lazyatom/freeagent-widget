@@ -100,7 +100,7 @@ FreeAgent = {
     var remoteUrl = this.remoteUrl("timeslips", ("project_id=" + this.currentProject.id));
     var now = new Date();
     var timeslipXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><timeslip>" + 
-                      "<dated-on>" + now.toUTCString() + "</dated-on>" + 
+                      "<dated-on>" + now.toISOString() + "</dated-on>" + 
                       "<user-id>" + this.userID + "</user-id>" + 
                       "<hours>" + options.timer.asHours() + "</hours>" + 
                       "<comment>" + options.comment + "</comment>";
