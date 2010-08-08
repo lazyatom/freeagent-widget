@@ -3,10 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Breakpoints</key>
-	<dict>
-		<key>widget.wdgt/free_agent.js:103</key>
-		<string>-postTime</string>
-	</dict>
+	<dict/>
 	<key>BreakpointsFrame</key>
 	<string>603 48 404 338 0 0 1440 878 </string>
 	<key>CYLastWindowPosition</key>
@@ -21,12 +18,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {981, 402}}</string>
-			<string>{{0, 412}, {981, 337}}</string>
+			<string>{{0, 0}, {981, 234}}</string>
+			<string>{{0, 244}, {981, 505}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>5</integer>
+	<integer>2</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -145,12 +142,12 @@
 		<key>Objects view last selections</key>
 		<array>
 			<array>
-				<integer>5</integer>
+				<integer>2</integer>
 			</array>
 		</array>
 		<key>Visible StackLayout Views</key>
 		<array>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>

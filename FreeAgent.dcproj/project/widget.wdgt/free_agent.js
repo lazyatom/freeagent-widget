@@ -12,8 +12,8 @@ FreeAgent = {
     if (this.domain == "" || this.email == "" || this.password == "") {
       GUI.promptForDetails();
     } else {
-      this.loadProjects();
       this.loadUser();
+      this.loadProjects();
     }
   },
 
@@ -37,9 +37,12 @@ FreeAgent = {
   },
   
   loadUser: function() {
-    this.loadXML("users", function(xml) {
-      FreeAgent.userID = xml.find("user<email:contains(" + FreeAgent.email + ")").find("id").text();
-      Logger.log("loaded user id: " + FreeAgent.userID);
+    var response = this.ajax({
+      url: this.remoteUrl("verify"),
+      success: function(xml, status) {
+        FreeAgent.userID = response.getAllResponseHeaders().split("\n")[0].trim().split(":")[1].trim();
+        Logger.log("User ID: " + FreeAgent.userID);
+      }
     });
   },
   
@@ -127,6 +130,9 @@ FreeAgent = {
         GUI.showPosted();
         Timer.reset();
       },
+      error: function(xml, status) {
+        console.log("Error: " + xml.responseText);
+      }
     }); 
   },
   
@@ -150,7 +156,7 @@ FreeAgent = {
   
   ajax: function(options) {
     Logger.log("loading from " + options.url);
-    $.ajax($.extend({
+    return $.ajax($.extend({
       contentType: "application/xml",
       dataType: "xml",
       beforeSend : function(req) {
