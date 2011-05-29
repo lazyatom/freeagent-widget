@@ -100,22 +100,23 @@ FreeAgent = {
     if (options.timer.duration < 60) { 
       return; // less than a minute! 
     }
-    var remoteUrl = this.remoteUrl("timeslips", ("project_id=" + this.currentProject.id));
+    var remoteUrl = this.remoteUrl("timeslips");
     var now = new Date();
     var timeslipXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><timeslip>" + 
                       "<dated-on>" + now.toISOString() + "</dated-on>" + 
-                      "<user-id>" + this.userID + "</user-id>" + 
+                      "<user-id>" + this.userID + "</user-id>" +
+                      "<project-id type='integer'>" + this.currentProject.id + "</project-id>" +
                       "<hours>" + options.timer.asHours() + "</hours>" + 
-                      "<comment>" + options.comment + "</comment>";
+                      "<comment><![CDATA[" + options.comment + "]]></comment>";
     // set the task
     if (this.currentTask.id == 'new') {
-      timeslipXML += "<new-task>" + this.currentTask.name + "</new-task>";
+      timeslipXML += "<new-task><![CDATA["+ this.currentTask.name + "]]></new-task>";
     } else {
       timeslipXML += "<task-id>" + this.currentTask.id + "</task-id>";
     }
     timeslipXML += "</timeslip>";
     
-    Logger.log("xml: " + timeslipXML);
+    console.log("xml: " + timeslipXML);
     
     this.ajax({
       type: 'POST',
