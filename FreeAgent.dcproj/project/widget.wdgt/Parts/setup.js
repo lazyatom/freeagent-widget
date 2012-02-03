@@ -18,8 +18,10 @@ var dashcodePartSpecs = {
     "text2": { "text": "Domain", "view": "DC.Text" },
     "text3": { "text": "Free Range", "view": "DC.Text" },
     "text4": { "text": "by James Adam  &", "view": "DC.Text" },
+    "text5": { "text": ".freeagent.com", "view": "DC.Text" },
     "time": { "creationFunction": "CreateButton", "leftImageWidth": 1, "onclick": "toggleTimer", "rightImageWidth": 1, "text": "00:00:00", "view": "DC.View" },
     "title": { "text": "FreeAgent", "view": "DC.Text" },
     "visitSite": { "text": "➠", "view": "DC.Text" }
 };
+
 

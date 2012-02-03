@@ -16,8 +16,8 @@
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
     <script type="text/javascript" src="base64.js" charset="utf-8"></script>
 </head>
-<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout" style="">
-    <div id="front" style="">
+<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
+    <div id="front">
         <img id="frontImg" src="Parts/Images/front.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.371415079,0.592769384,0.858536601,1; image-bottom-color: 0.0962844267,0.141298547,0.193224996,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 0; shine-strength: 0.75; shine-alpha-level: 0.87; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;">
         <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="title" apple-group="text"></div>
@@ -38,7 +38,7 @@
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="visitSite" onclick="visitSite(event)" title="See your timesheets online." apple-style="part-width-dependent: true;"></div>
         <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="customTime" apple-default-image-visibility="hidden" onchange="setCustomTime(event)" onkeyup="hideTime(event)">
     </div>
-    <div id="back" style="">
+    <div id="back">
         <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
         <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
         <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="email">
@@ -50,6 +50,7 @@
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="message" onclick="toggleLogger(event)" apple-style="part-width-dependent: true;"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="text3" onclick="openFreeRange(event)"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="text4" onclick="openLazyatom(event)"></div>
+        <div id="text5" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
     </div>
 </body>
 </html>
