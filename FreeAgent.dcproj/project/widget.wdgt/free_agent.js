@@ -148,7 +148,7 @@ FreeAgent = {
   },
   
   remoteUrl: function(resource, paramString) {
-    var url = "https://" + this.domain + ".freeagentcentral.com/" + resource;
+    var url = "https://" + this.domain + ".freeagent.com/" + resource;
     if (paramString != undefined) { 
       url += ("?" + paramString); 
     }
